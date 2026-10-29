@@ -1,0 +1,246 @@
+/* Modern dark theme for the Java practice website */
+:root {
+  color-scheme: dark;
+  --page: #0b1020;
+  --surface: #121a2b;
+  --surface-raised: #182338;
+  --border: #293750;
+  --text: #edf3ff;
+  --muted: #9aaac2;
+  --accent: #7c8cff;
+  --accent-2: #42d6c5;
+  --shadow: 0 12px 32px rgba(0, 0, 0, .22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at top left, rgba(91, 108, 255, .13), transparent 36rem),
+    var(--page);
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+header {
+  padding: 42px 22px 36px;
+  background: linear-gradient(135deg, #172342 0%, #171b35 55%, #102a38 100%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  max-width: 1100px;
+  margin: 0 auto 8px;
+  font-size: clamp(27px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.2;
+}
+
+header p {
+  max-width: 1100px;
+  margin: 0 auto;
+  color: #b9c7e0;
+  font-size: 16px;
+}
+
+main {
+  width: min(1120px, 100%);
+  margin: 30px auto 60px;
+  padding: 0 20px;
+}
+
+input[type="search"] {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 17px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  outline: none;
+  font: inherit;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+input[type="search"]::placeholder {
+  color: #8292ad;
+}
+
+input[type="search"]:focus {
+  background: #151f33;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(124, 140, 255, .15);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 18px 0 20px;
+}
+
+nav button {
+  padding: 9px 14px;
+  color: #b9c7df;
+  background: #141e31;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+nav button:hover {
+  color: #fff;
+  background: #202d47;
+  border-color: #53658b;
+  transform: translateY(-1px);
+}
+
+nav button.active {
+  color: #fff;
+  background: linear-gradient(135deg, #6878f5, #8b6cf6);
+  border-color: transparent;
+  box-shadow: 0 5px 16px rgba(108, 120, 245, .25);
+}
+
+#count {
+  margin: 14px 2px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.program {
+  margin: 16px 0;
+  padding: 21px;
+  background: linear-gradient(145deg, rgba(24, 35, 56, .96), rgba(17, 26, 43, .96));
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  box-shadow: 0 7px 22px rgba(0, 0, 0, .12);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.program:hover {
+  border-color: #465a7e;
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.program h2 {
+  margin: 0 0 17px;
+  color: #f1f5ff;
+  font-size: 18px;
+  font-weight: 750;
+  letter-spacing: -.015em;
+  line-height: 1.45;
+}
+
+.screens {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.screens h3 {
+  margin: 0 0 9px;
+  color: #aebfe0;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.screens img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid #34445f;
+  border-radius: 10px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, .18);
+}
+
+.missing {
+  padding: 22px;
+  color: var(--muted);
+  background: rgba(11, 16, 32, .65);
+  border: 1px dashed #3b4b68;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Keyboard focus and reduced-motion accessibility */
+button:focus-visible {
+  outline: 3px solid rgba(124, 140, 255, .8);
+  outline-offset: 3px;
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 32px 18px 28px;
+  }
+
+  header h1 {
+    font-size: 25px;
+  }
+
+  header p {
+    font-size: 14px;
+  }
+
+  main {
+    margin-top: 22px;
+    padding: 0 13px;
+  }
+
+  .screens {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .program {
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .program h2 {
+    font-size: 16px;
+  }
+
+  nav {
+    gap: 7px;
+  }
+
+  nav button {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

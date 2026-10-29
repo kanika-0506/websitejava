@@ -1,0 +1,8 @@
+const categories=["All",...new Set((window.JAVA_PROGRAMS||[]).map(p=>p.category))];let selected="All";
+const nav=document.querySelector("#categories"), list=document.querySelector("#programs"), search=document.querySelector("#search");
+function render(){nav.innerHTML="";categories.forEach(c=>{const b=document.createElement("button");b.textContent=c;b.className=c===selected?"active":"";b.onclick=()=>{selected=c;render()};nav.appendChild(b)});
+const q=search.value.toLowerCase();const shown=(window.JAVA_PROGRAMS||[]).filter(p=>(selected==="All"||p.category===selected)&&(p.title+" "+p.category+" "+p.number).toLowerCase().includes(q));
+document.querySelector("#count").textContent=`Showing ${shown.length} question(s)`;
+list.innerHTML="";shown.forEach(p=>{const card=document.createElement("article");card.className="program";const h=document.createElement("h2");h.textContent=`${p.category} — Q${p.number}: ${p.title}`;card.appendChild(h);const screens=document.createElement("div");screens.className="screens";
+[["Code",p.code],["Output",p.output]].forEach(([label,src])=>{const box=document.createElement("div");const t=document.createElement("h3");t.textContent=label;box.appendChild(t);if(src){const im=document.createElement("img");im.src=src;im.alt=label+" screenshot for "+p.title;im.loading="lazy";box.appendChild(im)}else{const m=document.createElement("div");m.className="missing";m.textContent="Screenshot not found";box.appendChild(m)}screens.appendChild(box)});card.appendChild(screens);list.appendChild(card)})}
+search.addEventListener("input",render);render();
